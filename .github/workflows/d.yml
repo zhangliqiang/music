@@ -1,0 +1,13 @@
+name: download-music
+
+on:
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: download
+        run: |
+          docker run --rm -v $(pwd):/music spotdl/spotify-downloader:v4.4.3 download https://open.spotify.com/playlist/37i9dQZEVXbLwpL8TjsxOG
+          ls -la $(pwd)
