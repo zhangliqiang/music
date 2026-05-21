@@ -9,5 +9,9 @@ jobs:
     steps:
       - name: download
         run: |
-          docker run --rm -v $(pwd):/music spotdl/spotify-downloader:v4.4.3 download https://open.spotify.com/playlist/37i9dQZEVXbLwpL8TjsxOG
-          ls -la $(pwd)
+          curl -Lf  https://github.com/spotDL/spotify-downloader/releases/download/v4.5.0/spotdl-4.5.0-linux > spotdl
+          chmod 777 spotdl
+          ./spotdl --download-ffmpeg
+          ./spotdl --download-deno
+          ./spotdl download https://open.spotify.com/playlist/37i9dQZEVXbLwpL8TjsxOG
+          ls -la
